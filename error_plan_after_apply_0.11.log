@@ -1,0 +1,88 @@
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
+
+null_resource.netdata-domain[2]: Refreshing state... (ID: 8555341837825194434)
+null_resource.netdata-domain[1]: Refreshing state... (ID: 7645162965437134019)
+null_resource.netdata-domain[0]: Refreshing state... (ID: 177659754371925462)
+aws_vpc.default: Refreshing state... (ID: vpc-0b2480bee4d8f09fe)
+aws_eip.nat_b: Refreshing state... (ID: eipalloc-05b4d0d1d7ca04239)
+aws_eip.nat_a: Refreshing state... (ID: eipalloc-06e61bd30b9a6dd5b)
+aws_placement_group.cluster: Refreshing state... (ID: test-pg)
+aws_eip.nat_c: Refreshing state... (ID: eipalloc-0bd45e6d730a9fd9c)
+aws_subnet.public_a: Refreshing state... (ID: subnet-030075aea7c4ed629)
+aws_subnet.public_b: Refreshing state... (ID: subnet-02cfbc0da067209c5)
+aws_lb_target_group.netdata[0]: Refreshing state... (ID: arn:aws:elasticloadbalancing:eu-west-1:...rgetgroup/test-tg-nd0/c8e36b8554ed37f4)
+aws_lb_target_group.netdata[1]: Refreshing state... (ID: arn:aws:elasticloadbalancing:eu-west-1:...rgetgroup/test-tg-nd1/a7002c5f4d2fb656)
+aws_security_group.lb: Refreshing state... (ID: sg-0fd1c3692385911c8)
+aws_lb_target_group.netdata[2]: Refreshing state... (ID: arn:aws:elasticloadbalancing:eu-west-1:...rgetgroup/test-tg-nd2/fadc2510d5152d80)
+aws_subnet.public_c: Refreshing state... (ID: subnet-0d7a8173f944f19c9)
+aws_lb_target_group.cluster: Refreshing state... (ID: arn:aws:elasticloadbalancing:eu-west-1:...1:targetgroup/test-tg/149e9c5924bcc73d)
+aws_security_group.cluster: Refreshing state... (ID: sg-0e0ac2c74127c87dd)
+aws_internet_gateway.gw: Refreshing state... (ID: igw-00f3c51b53e7f3844)
+aws_security_group_rule.netdata: Refreshing state... (ID: sgrule-3274824166)
+aws_launch_template.cluster: Refreshing state... (ID: lt-0c1d8c1b940f201de)
+aws_lb.lb: Refreshing state... (ID: arn:aws:elasticloadbalancing:eu-west-1:...dbalancer/app/test-lb/e80a6c3ac026a7d9)
+aws_route_table.public_rt: Refreshing state... (ID: rtb-075610d80fdf8cce3)
+aws_nat_gateway.nat_a: Refreshing state... (ID: nat-0118a1cad5ae99ef4)
+aws_nat_gateway.nat_b: Refreshing state... (ID: nat-00e20cb78a17a01e6)
+aws_nat_gateway.nat_c: Refreshing state... (ID: nat-06da1ef251911b253)
+aws_route_table_association.public_a: Refreshing state... (ID: rtbassoc-0961fce20ddc22146)
+aws_route_table_association.public_b: Refreshing state... (ID: rtbassoc-07c4819d27f73ea01)
+aws_route_table_association.public_c: Refreshing state... (ID: rtbassoc-0098ee4c939b68557)
+aws_lb_listener.lb_http: Refreshing state... (ID: arn:aws:elasticloadbalancing:eu-west-1:...t-lb/e80a6c3ac026a7d9/78c3bfc34fb68739)
+aws_autoscaling_group.cluster: Refreshing state... (ID: test-asg)
+aws_lb_listener_rule.netdata_http[2]: Refreshing state... (ID: arn:aws:elasticloadbalancing:eu-west-1:...a7d9/78c3bfc34fb68739/d26212c580315fea)
+aws_lb_listener_rule.netdata_http[1]: Refreshing state... (ID: arn:aws:elasticloadbalancing:eu-west-1:...a7d9/78c3bfc34fb68739/069aa6e4fe0a12d9)
+aws_lb_listener_rule.netdata_http[0]: Refreshing state... (ID: arn:aws:elasticloadbalancing:eu-west-1:...a7d9/78c3bfc34fb68739/853c13daaeacab22)
+
+------------------------------------------------------------------------
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  ~ aws_security_group.lb
+      egress.#:                             "3" => "2"
+      egress.1214578585.cidr_blocks.#:      "1" => "1"
+      egress.1214578585.cidr_blocks.0:      "192.168.0.0/16" => "192.168.0.0/16"
+      egress.1214578585.description:        "Connect to goss for healthcheck" => "Connect to goss for healthcheck"
+      egress.1214578585.from_port:          "8080" => "8080"
+      egress.1214578585.ipv6_cidr_blocks.#: "0" => "0"
+      egress.1214578585.prefix_list_ids.#:  "0" => "0"
+      egress.1214578585.protocol:           "tcp" => "tcp"
+      egress.1214578585.security_groups.#:  "0" => "0"
+      egress.1214578585.self:               "false" => "false"
+      egress.1214578585.to_port:            "8080" => "8080"
+      egress.2024495974.cidr_blocks.#:      "1" => "0"
+      egress.2024495974.cidr_blocks.0:      "192.168.0.0/16" => ""
+      egress.2024495974.description:        "Connect to netdata" => ""
+      egress.2024495974.from_port:          "19999" => "0"
+      egress.2024495974.ipv6_cidr_blocks.#: "0" => "0"
+      egress.2024495974.prefix_list_ids.#:  "0" => "0"
+      egress.2024495974.protocol:           "tcp" => ""
+      egress.2024495974.security_groups.#:  "0" => "0"
+      egress.2024495974.self:               "false" => "false"
+      egress.2024495974.to_port:            "19999" => "0"
+      egress.2654547534.cidr_blocks.#:      "1" => "1"
+      egress.2654547534.cidr_blocks.0:      "192.168.0.0/16" => "192.168.0.0/16"
+      egress.2654547534.description:        "Connect to Traefik" => "Connect to Traefik"
+      egress.2654547534.from_port:          "80" => "80"
+      egress.2654547534.ipv6_cidr_blocks.#: "0" => "0"
+      egress.2654547534.prefix_list_ids.#:  "0" => "0"
+      egress.2654547534.protocol:           "tcp" => "tcp"
+      egress.2654547534.security_groups.#:  "0" => "0"
+      egress.2654547534.self:               "false" => "false"
+      egress.2654547534.to_port:            "80" => "80"
+
+
+Plan: 0 to add, 1 to change, 0 to destroy.
+
+------------------------------------------------------------------------
+
+Note: You didn't specify an "-out" parameter to save this plan, so Terraform
+can't guarantee that exactly these actions will be performed if
+"terraform apply" is subsequently run.
+

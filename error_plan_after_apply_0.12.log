@@ -1,0 +1,135 @@
+Refreshing Terraform state in-memory prior to plan...
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
+
+null_resource.netdata-domain[1]: Refreshing state... [id=3828104939424249814]
+null_resource.netdata-domain[0]: Refreshing state... [id=2958887671291609530]
+null_resource.netdata-domain[2]: Refreshing state... [id=7117246945510794250]
+aws_placement_group.cluster: Refreshing state... [id=test-pg]
+aws_eip.nat_c: Refreshing state... [id=eipalloc-04c6ed1c035d6c7d1]
+aws_eip.nat_b: Refreshing state... [id=eipalloc-077a0a5a36e8365e1]
+aws_eip.nat_a: Refreshing state... [id=eipalloc-0ee59545cecf58412]
+aws_vpc.default: Refreshing state... [id=vpc-0511b44e117f3e657]
+aws_internet_gateway.gw: Refreshing state... [id=igw-0b2e3774447d9b0f3]
+aws_lb_target_group.cluster: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:981467355511:targetgroup/test-tg/02842337c40c44dc]
+aws_subnet.public_c: Refreshing state... [id=subnet-05b5ec2b4055eb70d]
+aws_security_group.lb: Refreshing state... [id=sg-0510a72828a8af2f9]
+aws_lb_target_group.netdata[0]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:981467355511:targetgroup/test-tg-nd0/a4e7f1f6fe77cb3b]
+aws_lb_target_group.netdata[1]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:981467355511:targetgroup/test-tg-nd1/2b9630277c591343]
+aws_subnet.public_a: Refreshing state... [id=subnet-0a7b2606ff09fa911]
+aws_subnet.public_b: Refreshing state... [id=subnet-0e7eac0a52e4a2c32]
+aws_lb_target_group.netdata[2]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:981467355511:targetgroup/test-tg-nd2/50e2da6a4dd588e1]
+aws_security_group.cluster: Refreshing state... [id=sg-0f71bf7620e4ef0aa]
+aws_route_table.public_rt: Refreshing state... [id=rtb-0d9a9186d0856d3cc]
+aws_security_group_rule.netdata[0]: Refreshing state... [id=sgrule-3815569734]
+aws_nat_gateway.nat_a: Refreshing state... [id=nat-0fbd17132d67d8ede]
+aws_nat_gateway.nat_b: Refreshing state... [id=nat-0db90b30521301f67]
+aws_lb.lb: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:981467355511:loadbalancer/app/test-lb/2a58c0c63e854fa4]
+aws_nat_gateway.nat_c: Refreshing state... [id=nat-08be8153d0b1fe192]
+aws_launch_template.cluster: Refreshing state... [id=lt-0ad79bf1e162c139e]
+aws_route_table_association.public_c: Refreshing state... [id=rtbassoc-016ada49e91a77929]
+aws_route_table_association.public_a: Refreshing state... [id=rtbassoc-08ac9f0f611cdbdb4]
+aws_route_table_association.public_b: Refreshing state... [id=rtbassoc-0e7f0d0844671c366]
+aws_lb_listener.lb_http: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:981467355511:listener/app/test-lb/2a58c0c63e854fa4/1ddb9de5921b2058]
+aws_autoscaling_group.cluster: Refreshing state... [id=test-asg]
+aws_lb_listener_rule.netdata_http[2]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:981467355511:listener-rule/app/test-lb/2a58c0c63e854fa4/1ddb9de5921b2058/67116af1674ba8e5]
+aws_lb_listener_rule.netdata_http[1]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:981467355511:listener-rule/app/test-lb/2a58c0c63e854fa4/1ddb9de5921b2058/4bb15e3cddaea2bc]
+aws_lb_listener_rule.netdata_http[0]: Refreshing state... [id=arn:aws:elasticloadbalancing:eu-west-1:981467355511:listener-rule/app/test-lb/2a58c0c63e854fa4/1ddb9de5921b2058/63bbac1f2a771c62]
+
+------------------------------------------------------------------------
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # aws_security_group.lb will be updated in-place
+  ~ resource "aws_security_group" "lb" {
+        arn                    = "arn:aws:ec2:eu-west-1:981467355511:security-group/sg-0510a72828a8af2f9"
+        description            = "Test Load Balancer Security Group"
+      ~ egress                 = [
+            {
+                cidr_blocks      = [
+                    "192.168.0.0/16",
+                ]
+                description      = "Connect to Traefik"
+                from_port        = 80
+                ipv6_cidr_blocks = []
+                prefix_list_ids  = []
+                protocol         = "tcp"
+                security_groups  = []
+                self             = false
+                to_port          = 80
+            },
+            {
+                cidr_blocks      = [
+                    "192.168.0.0/16",
+                ]
+                description      = "Connect to goss for healthcheck"
+                from_port        = 8080
+                ipv6_cidr_blocks = []
+                prefix_list_ids  = []
+                protocol         = "tcp"
+                security_groups  = []
+                self             = false
+                to_port          = 8080
+            },
+          - {
+              - cidr_blocks      = [
+                  - "192.168.0.0/16",
+                ]
+              - description      = "Connect to netdata"
+              - from_port        = 19999
+              - ipv6_cidr_blocks = []
+              - prefix_list_ids  = []
+              - protocol         = "tcp"
+              - security_groups  = []
+              - self             = false
+              - to_port          = 19999
+            },
+        ]
+        id                     = "sg-0510a72828a8af2f9"
+        ingress                = [
+            {
+                cidr_blocks      = [
+                    "0.0.0.0/0",
+                ]
+                description      = "Allow incoming on HTTP"
+                from_port        = 80
+                ipv6_cidr_blocks = []
+                prefix_list_ids  = []
+                protocol         = "tcp"
+                security_groups  = []
+                self             = false
+                to_port          = 80
+            },
+            {
+                cidr_blocks      = [
+                    "0.0.0.0/0",
+                ]
+                description      = "Allow incoming on HTTPS"
+                from_port        = 443
+                ipv6_cidr_blocks = []
+                prefix_list_ids  = []
+                protocol         = "tcp"
+                security_groups  = []
+                self             = false
+                to_port          = 443
+            },
+        ]
+        name                   = "test-lb"
+        owner_id               = "981467355511"
+        revoke_rules_on_delete = false
+        tags                   = {}
+        vpc_id                 = "vpc-0511b44e117f3e657"
+    }
+
+Plan: 0 to add, 1 to change, 0 to destroy.
+
+------------------------------------------------------------------------
+
+Note: You didn't specify an "-out" parameter to save this plan, so Terraform
+can't guarantee that exactly these actions will be performed if
+"terraform apply" is subsequently run.
+
