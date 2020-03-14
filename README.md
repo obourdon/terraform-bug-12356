@@ -3,8 +3,7 @@ This is a repository for repoducing Terraform AWS Provider issue [#12356](https:
 You need to run:
 
 * `terraform init`
-* `erraform apply`
+* `terraform apply`
 * `terraform plan`
 
 The error is stored in `error_plan_after_apply_0.1[12].log`
-[]()
